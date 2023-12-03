@@ -23,6 +23,10 @@ export class SmartwatchService {
   async findByToken(token: string): Promise<SmartWatchDevice[]> {
     return await this.smartwatchRepository.findBy({ token, active: true });
   }
+  async findAllByToken(token: string): Promise<SmartWatchDevice[]> {
+    return await this.smartwatchRepository.findBy({ token });
+  }
+  
 
   async findBySmartphone(smartphoneId: number): Promise<SmartWatchDevice[]> {
     return await this.smartwatchRepository.findBy({
