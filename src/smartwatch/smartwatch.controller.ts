@@ -35,6 +35,12 @@ export class SmartwatchController {
   findAll(@Query('token') token: string) {
     return this.smartwatchService.findByToken(token);
   }
+
+  @Get("/token/all")
+  findAll(@Query('token') token: string) {
+    return this.smartwatchService.findAllByToken(token);
+  }
+  
   
   @UseGuards(AuthGuard)
   @Get('/me')
