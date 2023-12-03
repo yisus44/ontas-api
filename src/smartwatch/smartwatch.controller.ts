@@ -17,11 +17,12 @@ import { AuthGuard } from 'src/auth/guards/auth.guard';
 import { GetCurrentUser } from 'src/auth/decorators/current-user';
 import { Smartphone } from 'src/smartphone/entities/smartphone.entity';
 
-@UseGuards(AuthGuard)
+
 @Controller('smartwatch')
 export class SmartwatchController {
   constructor(private readonly smartwatchService: SmartwatchService) {}
-
+  
+  @UseGuards(AuthGuard)
   @Post()
   create(
     @Body() createSmartwatchDto: CreateSmartwatchDto,
@@ -34,7 +35,8 @@ export class SmartwatchController {
   findAll(@Query('token') token: string) {
     return this.smartwatchService.findByToken(token);
   }
-
+  
+  @UseGuards(AuthGuard)
   @Get('/me')
   findBySmartphone(@GetCurrentUser() smartphone: Smartphone) {
     return this.smartwatchService.findBySmartphone(smartphone.id);
