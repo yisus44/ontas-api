@@ -13,6 +13,7 @@ import {
 import { AuthService } from './auth.service';
 import { SignUpDto } from './dto/signup.dto';
 import { SignInDto } from './dto/signin.dto';
+import { AuthGuard } from './guards/auth.guard';
 
 @Controller('auth')
 export class AuthController {
@@ -26,5 +27,11 @@ export class AuthController {
   @Post('/check-sms-code')
   checkSMSCode(@Body() signInDto: SignInDto) {
     return this.authService.checkCode(signInDto);
+  }
+
+  @UseGuards(AuthGuard)
+  @Get('/healthcheck')
+  healthcheck() {
+    return;
   }
 }
