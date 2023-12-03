@@ -65,7 +65,7 @@ export class AuthService {
     const expiresInMilliseconds =
       this.commonService.parseDurationToMilliseconds(expirationTime);
     const expirationTimestamp = Date.now() + expiresInMilliseconds;
-    return { token, smartwatch: smartphone, expirationTimestamp };
+    return { token, smartphone, expirationTimestamp };
   }
 
   async signPayload(smartwatch: Smartphone, expirationTime: string) {
