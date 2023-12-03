@@ -37,7 +37,7 @@ export class SmartwatchController {
   }
 
   @Get("/token/all")
-  findAll(@Query('token') token: string) {
+  findAllByToken(@Query('token') token: string) {
     return this.smartwatchService.findAllByToken(token);
   }
   
